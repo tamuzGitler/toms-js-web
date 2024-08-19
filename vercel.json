@@ -1,12 +1,6 @@
 {
+  "version": 2,
   "builds": [
-    {
-      "src": "my-react-app/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "my-react-app/build" 
-      }
-    },
     {
       "src": "backend/main.py",
       "use": "@vercel/python"
@@ -14,12 +8,12 @@
   ],
   "routes": [
     {
-      "src": "/api/(.*)",
-      "dest": "backend/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "my-react-app/build/$1"
+      "dest": "/backend/main.py"
     }
-  ]
+  ],
+  "env": {
+    "FLASK_ENV": "production",
+    "FLASK_APP": "backend/main.py"
+  }
 }
