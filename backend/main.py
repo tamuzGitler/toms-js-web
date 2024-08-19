@@ -30,15 +30,30 @@ from flask_cors import CORS
 from collections import defaultdict
 from socket_handler import SocketIOHandler
 from jsCodeExamples import TITLES,TEMPLATES, SOLUTIONS, DESCRIPTIONS, TASKS
+import shutil
+
 ######################## Constants ########################
 
+def copy_database_to_tmp():
+    """
+    Copies the SQLite database from the project directory to Railway's ephemeral file system.
+    """
+    src_path = 'backend/database/code_blocks_table.db'  # Assuming your database is in the backend folder
+    tmp_dir = '/tmp'  # Railway's ephemeral file system directory
+    dest_path = os.path.join(tmp_dir, 'code_blocks_table.db')
 
+    if not os.path.exists(tmp_dir):
+        os.makedirs(tmp_dir)
+
+    shutil.copy2(src_path, dest_path)
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{dest_path}'
 
 
 ######################## code ########################
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
-# app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'database/code_blocks_table.db')}"db.init_app(app)
+copy_database_to_tmp()
 # CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 socketio_handler = SocketIOHandler(app)
 
