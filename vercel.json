@@ -2,18 +2,18 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/app.py",
+      "src": "backend/appp.py",
       "use": "@vercel/python"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "/backend/app.py"
+      "dest": "/backend/appp.py"
     }
   ],
   "env": {
     "FLASK_ENV": "production",
-    "FLASK_APP": "backend/app.py"
+    "FLASK_APP": "backend/appp.py"
   }
 }
