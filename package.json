@@ -1,0 +1,7 @@
+{
+    "name": "toms-js-web", 
+    "version": "1.0.0",
+    "scripts": {
+      "build": "cd my-react-app && npm install && npm run build"
+    }
+  }
