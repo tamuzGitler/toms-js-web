@@ -132,7 +132,7 @@ dmypy.json
 node_modules/
 
 # Build output
-# my-react-app/dist/
+my-react-app/dist/
 
 # Environment variables
 .env
