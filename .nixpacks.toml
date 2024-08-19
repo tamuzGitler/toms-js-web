@@ -1,0 +1,16 @@
+# .nixpacks.toml
+
+[phases]
+install = """
+  # Install Python dependencies
+  pip install -r backend/requirements.txt
+
+  # Install Node.js dependencies and build the frontend
+  cd my-react-app && npm install && npm run build
+"""
+
+[build]
+command = "echo 'Build completed'"
+
+[static]
+path = "my-react-app/dist"
