@@ -1,7 +1,10 @@
 {
-    "name": "toms-js-web", 
+    "name": "toms-js-web",
     "version": "1.0.0",
     "scripts": {
+      "prestart": "pip install -r backend/requirements.txt",
+      "start": "gunicorn backend.main:app",
       "build": "cd my-react-app && npm install && npm run build"
     }
   }
+  
