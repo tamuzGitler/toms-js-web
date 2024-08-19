@@ -68,7 +68,7 @@ socketio_handler = SocketIOHandler(app)
 def hello():
     return "Hello, World!"
 
-@app.route('/get_buttons_names/')
+@app.route('/get_buttons_names')
 def handle_get_buttons():
     print("user entered lobby")
     query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
