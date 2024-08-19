@@ -57,18 +57,17 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
 db.init_app(app)
 # CORS(app, resources={r"/api/*": {"origins": "*"}})
-# CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 socketio_handler = SocketIOHandler(app)
 
 ######################## server requests ########################
-# # not in used
+# not in used
 @app.route('/')
 def hello():
     return "Hello, World!"
 
-@app.route('/get_buttons_names')
+@app.route('/get_buttons_names/')
 def handle_get_buttons():
     print("user entered lobby")
     query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
