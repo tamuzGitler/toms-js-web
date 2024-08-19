@@ -12,5 +12,8 @@ install = """
 [build]
 command = "echo 'Build completed'"
 
+[start]
+command = "gunicorn backend.main:app"
+
 [static]
 path = "my-react-app/dist"
