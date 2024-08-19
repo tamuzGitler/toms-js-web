@@ -21,12 +21,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import jsonify # takes Python data structures and converts them into JSON format
 # from flask_socketio import SocketIO, emit, join_room, leave_room
 from flask import Flask, render_template
-from collections import defaultdict
 from flask import request 
 from flask import send_from_directory
 import os
 from models import db, CodeBlock 
-from flask_cors import CORS
+# from flask_cors import CORS
 from collections import defaultdict
 from socket_handler import SocketIOHandler
 from jsCodeExamples import TITLES,TEMPLATES, SOLUTIONS, DESCRIPTIONS, TASKS
@@ -58,7 +57,7 @@ copy_database_to_tmp()
 db.init_app(app)
 # CORS(app, resources={r"/api/*": {"origins": "*"}})
 # CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
-CORS(app, resources={r"/*": {"origins": "*"}})
+# CORS(app, resources={r"/*": {"origins": "*"}})
 
 socketio_handler = SocketIOHandler(app)
 
