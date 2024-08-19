@@ -19,9 +19,7 @@ class SocketIOHandler:
         """
         Runs the Socket.IO server.
         """
-        # self.socketio.run(app)
-        self.socketio.run(app, async_mode='eventlet')
-
+        self.socketio.run(app)
 
 
     def handle_user_left_room(self,data):
