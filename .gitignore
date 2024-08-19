@@ -128,11 +128,11 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Node modules
-node_modules/
+# # Node modules
+# node_modules/
 
-# Build output
-my-react-app/dist/
+# # Build output
+# my-react-app/dist/
 
-# Environment variables
-.env
+# # Environment variables
+# .env
