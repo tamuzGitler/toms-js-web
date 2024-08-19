@@ -26,10 +26,11 @@ from flask import send_from_directory
 import os
 from models import db, CodeBlock 
 # from flask_cors import CORS
-from collections import defaultdict
 from socket_handler import SocketIOHandler
 from jsCodeExamples import TITLES,TEMPLATES, SOLUTIONS, DESCRIPTIONS, TASKS
 import shutil
+from flask_cors import CORS
+
 
 ######################## Constants ########################
 
@@ -55,21 +56,19 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
 db.init_app(app)
-# CORS(app, resources={r"/api/*": {"origins": "*"}})
-# CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
-# CORS(app, resources={r"/*": {"origins": "*"}})
-
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 socketio_handler = SocketIOHandler(app)
 
 ######################## server requests ########################
 # not in used
 @app.route('/')
 def hello():
+    # print("hii")
     return "Hello, World!"
 
-@app.route('/get_buttons_names')
+@app.route('/get_buttons_names/')
 def handle_get_buttons():
-    print("user entered lobby")
+    # print("user entered lobby")
     query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
     blocks = query.all() # fetches all the rows that match your query
     data = [{"code_block_id":cb.code_block_id, "title": cb.title} for cb in blocks]
@@ -81,7 +80,7 @@ def get_code_block_data(code_block_id):
     """
     returns inital data
     """
-    print("Getting offline code block data")
+    # print("Getting offline code block data")
 
     code_block = CodeBlock.query.get(code_block_id)
     if code_block:
