@@ -133,6 +133,7 @@ node_modules/
 
 # Build output
 my-react-app/dist/
+my-react-app/build/
 
 # Environment variables
 .env
