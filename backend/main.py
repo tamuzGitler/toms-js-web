@@ -38,7 +38,7 @@ def copy_database_to_tmp():
     """
     Copies the SQLite database from the project directory to Railway's ephemeral file system.
     """
-    src_path = 'backend/database/code_blocks_table.db'  # Assuming your database is in the backend folder
+    src_path = 'database/code_blocks_table.db'  # Assuming your database is in the backend folder
     tmp_dir = '/tmp'  # Railway's ephemeral file system directory
     dest_path = os.path.join(tmp_dir, 'code_blocks_table.db')
 
