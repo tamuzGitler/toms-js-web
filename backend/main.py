@@ -56,7 +56,7 @@ app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
 db.init_app(app)
-CORS(app, resources={r"*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"*": {"origins": ["http://localhost:5173", "http://127.0.0.1:5000"]}}) 
 socketio_handler = SocketIOHandler(app)
 
 ######################## server requests ########################
