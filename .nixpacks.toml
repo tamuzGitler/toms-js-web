@@ -1,23 +1,17 @@
-# Example .nixpacks.toml
+# .nixpacks.toml
 
-# Define phases for installing dependencies and building the application
 [phases]
-  # Install backend dependencies
-  [phases.install]
-    commands = [
-      "pip install -r backend/requirements.txt"  # Install Python backend dependencies
-    ]
-  
-  # Build the React frontend application
-  [phases.build]
-    commands = [
-      "cd my-react-app && npm install && npm run build"  # Install Node.js dependencies and build frontend
-    ]
+install = """
+  # Install Python dependencies
+  pip install -r backend/requirements.txt
 
-# Specify the start command for the backend
+  # Install Node.js dependencies and build the frontend
+  cd my-react-app && npm install && npm run build
+"""
+
+[build]
+command = "echo 'Build completed'"
+
 [start]
-  command = "gunicorn backend.main:app"  # Adjust if necessary
+command = "gunicorn backend.main:app"
 
-# If serving static files from the frontend build output
-[static]
-path = "my-react-app/dist"  # Directory where the build files are located
