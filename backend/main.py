@@ -66,7 +66,7 @@ def hello():
     # print("hii")
     return "Hello, World!"
 
-@app.route('/get_buttons_names')
+@app.route('/get_buttons_names/')
 def handle_get_buttons():
     # print("user entered lobby")
     query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
@@ -75,7 +75,7 @@ def handle_get_buttons():
     return jsonify(data)
 
 
-@app.route('/codeblocks/<int:code_block_id>')  # captures the ID from the URL
+@app.route('/codeblocks/<int:code_block_id>/')  # captures the ID from the URL
 def get_code_block_data(code_block_id):
     """
     returns inital data
