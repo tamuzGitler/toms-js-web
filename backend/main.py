@@ -63,10 +63,10 @@ CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 socketio_handler = SocketIOHandler(app)
 
 ######################## server requests ########################
-# not in used
-@app.route('/')
-def hello():
-    return "Hello, World!"
+# # not in used
+# @app.route('/')
+# def hello():
+#     return "Hello, World!"
 
 @app.route('/get_buttons_names')
 def handle_get_buttons():
