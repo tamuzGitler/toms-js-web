@@ -48,12 +48,14 @@ def copy_database_to_tmp():
     shutil.copy2(src_path, dest_path)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{dest_path}'
+    
 
 
 ######################## code ########################
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
+db.init_app(app)
 CORS(app, resources={r"/api/*": {"origins": "*"}})
 socketio_handler = SocketIOHandler(app)
 
