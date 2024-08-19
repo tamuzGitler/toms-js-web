@@ -57,7 +57,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
 db.init_app(app)
 # CORS(app, resources={r"/api/*": {"origins": "*"}})
-CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+# CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/*": {"origins": "http://localhost:5173"}})
 
 socketio_handler = SocketIOHandler(app)
 
