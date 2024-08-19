@@ -91,21 +91,21 @@ def hello():
 
 
 ######################## fill db ########################
-# with app.app_context(): 
-#     db.create_all() # create the corresponding tables in your database.
-#     if CodeBlock.query.count() == 0:
-#         try:
-#             for i in range(len(TEMPLATES)):
-#                 new_code_block = CodeBlock(title=TITLES[i], 
-#                                             template=TEMPLATES[i], 
-#                                             solution=SOLUTIONS[i], 
-#                                             descriptions=DESCRIPTIONS[i],
-#                                             task=TASKS[i])
-#                 db.session.add(new_code_block)
-#             db.session.commit()
-#         except Exception as e:
-#             print(f"Error populating database: {e}")
-#             db.session.rollback()  # Roll back changes in case of an error
+with app.app_context(): 
+    db.create_all() # create the corresponding tables in your database.
+    if CodeBlock.query.count() == 0:
+        try:
+            for i in range(len(TEMPLATES)):
+                new_code_block = CodeBlock(title=TITLES[i], 
+                                            template=TEMPLATES[i], 
+                                            solution=SOLUTIONS[i], 
+                                            descriptions=DESCRIPTIONS[i],
+                                            task=TASKS[i])
+                db.session.add(new_code_block)
+            db.session.commit()
+        except Exception as e:
+            print(f"Error populating database: {e}")
+            db.session.rollback()  # Roll back changes in case of an error
 
 
 if __name__ == '__main__':
