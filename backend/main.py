@@ -54,7 +54,7 @@ def copy_database_to_tmp():
 app = Flask(__name__)
 basedir = os.path.abspath(os.path.dirname(__file__))
 copy_database_to_tmp()
-# CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
+CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 socketio_handler = SocketIOHandler(app)
 
 ######################## server requests ########################
