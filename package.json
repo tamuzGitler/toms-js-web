@@ -2,7 +2,6 @@
     "name": "toms-js-web",
     "version": "1.0.0",
     "scripts": {
-      "start": "gunicorn backend.main:app",
       "build": "cd my-react-app && npm install && npm run build"
     }
   }
