@@ -65,31 +65,31 @@ socketio_handler = SocketIOHandler(app)
 def hello():
     return "Hello, World!"
 
-# @app.route('/get_buttons_names/')
-# def handle_get_buttons():
-#     print("user entered lobby")
-#     query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
-#     blocks = query.all() # fetches all the rows that match your query
-#     data = [{"code_block_id":cb.code_block_id, "title": cb.title} for cb in blocks]
-#     return jsonify(data)
+@app.route('/get_buttons_names/')
+def handle_get_buttons():
+    print("user entered lobby")
+    query = CodeBlock.query.with_entities(CodeBlock.code_block_id, CodeBlock.title).order_by(CodeBlock.code_block_id)
+    blocks = query.all() # fetches all the rows that match your query
+    data = [{"code_block_id":cb.code_block_id, "title": cb.title} for cb in blocks]
+    return jsonify(data)
 
 
-# @app.route('/codeblocks/<int:code_block_id>')  # captures the ID from the URL
-# def get_code_block_data(code_block_id):
-#     """
-#     returns inital data
-#     """
-#     print("Getting offline code block data")
+@app.route('/codeblocks/<int:code_block_id>')  # captures the ID from the URL
+def get_code_block_data(code_block_id):
+    """
+    returns inital data
+    """
+    print("Getting offline code block data")
 
-#     code_block = CodeBlock.query.get(code_block_id)
-#     if code_block:
-#         return jsonify({
-#             'title': code_block.title,
-#             'description': code_block.descriptions,
-#             'task': code_block.task 
-#         })
-#     else:
-#         return jsonify({"error": "Code block not found"}), 404
+    code_block = CodeBlock.query.get(code_block_id)
+    if code_block:
+        return jsonify({
+            'title': code_block.title,
+            'description': code_block.descriptions,
+            'task': code_block.task 
+        })
+    else:
+        return jsonify({"error": "Code block not found"}), 404
 
 
 ######################## fill db ########################
