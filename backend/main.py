@@ -37,8 +37,8 @@ from jsCodeExamples import TITLES,TEMPLATES, SOLUTIONS, DESCRIPTIONS, TASKS
 
 ######################## code ########################
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///C:/Users/tamuz/Documents/GitHub/Moveo Project/backend/database/code_blocks_table.db'
-db.init_app(app)
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(basedir, 'database/code_blocks_table.db')}"db.init_app(app)
 CORS(app, resources={r"/api/*": {"origins": "http://localhost:5173"}})
 cd_rooms = {}
 socketio_handler = SocketIOHandler(app)
