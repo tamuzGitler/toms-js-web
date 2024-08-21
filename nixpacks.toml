@@ -1,23 +1,14 @@
 [phases.setup]
-# Install Python 3.10 and pip
 commands = [
   "nix-env -iA nixpkgs.python310Full"
 ]
 
 [phases.build]
-# Install the necessary Python dependencies from the requirements.txt file in the backend folder
 commands = [
   "pip install -r backend/requirements.txt"
 ]
 
-[phases.start]
-# Start the Flask application with gunicorn, targeting the app in backend/main.py
-commands = [
-  "gunicorn --chdir backend main:app"
-]
-
 [nixpkgs]
-# Explicitly specify the Python package
 packages = [
   "python310Full"
 ]
