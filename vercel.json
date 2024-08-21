@@ -1,0 +1,20 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "backend/requirements.txt",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "/backend/main.py"
+      }
+    ],
+    "env": {
+      "FLASK_ENV": "production",
+      "FLASK_APP": "backend/main.py"
+    }
+  }
+  
