@@ -1,8 +1,14 @@
-[phases]
-setup = "pip install --upgrade pip setuptools wheel"
+[phases.setup]
+commands = [
+  "pip install --upgrade pip setuptools wheel"
+]
 
-# Build phase: installs dependencies from requirements.txt
-build = "pip install -r backend/requirements.txt"
+[phases.build]
+commands = [
+  "pip install -r backend/requirements.txt"
+]
 
-# Start phase: runs your application using gunicorn
-start = "gunicorn backend.main:app"
+[phases.start]
+commands = [
+  "gunicorn backend.main:app"
+]
