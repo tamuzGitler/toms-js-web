@@ -1,6 +1,6 @@
 [phases.setup]
 commands = [
-  "pip install --upgrade pip setuptools wheel"
+  "nix-env -iA nixpkgs.python310Full"
 ]
 
 [phases.build]
@@ -11,4 +11,9 @@ commands = [
 [phases.start]
 commands = [
   "gunicorn backend.main:app"
+]
+
+[nixpkgs]
+packages = [
+  "python310Full"
 ]
