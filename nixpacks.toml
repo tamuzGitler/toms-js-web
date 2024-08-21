@@ -1,0 +1,8 @@
+[phases]
+setup = "pip install --upgrade pip setuptools wheel"
+
+# Build phase: installs dependencies from requirements.txt
+build = "pip install -r backend/requirements.txt"
+
+# Start phase: runs your application using gunicorn
+start = "gunicorn backend.main:app"
