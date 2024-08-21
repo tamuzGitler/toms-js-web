@@ -19,7 +19,7 @@ class SocketIOHandler:
         """
         Runs the Socket.IO server.
         """
-        self.socketio.run(app, port=5000)
+        self.socketio.run(app)
 
 
     def handle_user_left_room(self,data):
